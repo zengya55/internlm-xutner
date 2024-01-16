@@ -1,6 +1,9 @@
 import torch
 from transformers import AutoTokenizer, AutoModelForCausalLM
-
+import os
+from langchain.prompts import PromptTemplate
+from langchain.chains import RetrievalQA
+import gradio as gr
 os.system('python download_model.py')
 model_name_or_path = "/home/xlab-app-center/model/merged"
 
@@ -15,11 +18,6 @@ system_prompt = """You are an AI assistant whose name is InternLM (书生·浦�
 
 messages = [(system_prompt, '')]
 response, history = model.chat(tokenizer, input_text, history=messages)
-
-import os
-from langchain.prompts import PromptTemplate
-from langchain.chains import RetrievalQA
-import gradio as gr
 
 class Model_center():
     """
