@@ -28,6 +28,7 @@ class Model_center():
     def __init__(self):
         # 构造函数，加载检索问答链
         #self.chain = load_chain()
+        pass
 
     def qa_chain_self_answer(self, question: str, chat_history: list = []):
         """
