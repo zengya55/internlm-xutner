@@ -5,7 +5,18 @@ from langchain.prompts import PromptTemplate
 from langchain.chains import RetrievalQA
 import gradio as gr
 os.system('python download_model.py')
+
 model_name_or_path = "/home/xlab-app-center/model/merged"
+# 检查路径是否存在
+if os.path.exists(model_name_or_path):
+    # 如果路径存在，进一步检查它是否是文件夹
+    if os.path.isdir(model_name_or_path):
+        print(f"'{model_name_or_path}' exists and it's a directory.")
+    else:
+        print(f"'{model_name_or_path}' exists but it's not a directory, it might be a file.")
+else:
+    print(f"'{model_name_or_path}' does not exist.")
+
 
 tokenizer = AutoTokenizer.from_pretrained(model_name_or_path, trust_remote_code=True)
 model = AutoModelForCausalLM.from_pretrained(model_name_or_path, trust_remote_code=True, torch_dtype=torch.bfloat16, device_map='auto')
