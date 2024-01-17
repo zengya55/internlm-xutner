@@ -5,7 +5,7 @@ from langchain.prompts import PromptTemplate
 from langchain.chains import RetrievalQA
 import gradio as gr
 os.system('python download_model.py')
-
+os.system('xtuner convert merge /home/xlab-app-center/model/Shanghai_AI_Laboratory/internlm-chat-7b /home/xlab-app-center/model/hf /home/xlab-app-center/model/merged --max-shard-size 2GB') 
 model_name_or_path = "/home/xlab-app-center/model/merged"
 # 检查路径是否存在
 if os.path.exists(model_name_or_path):
